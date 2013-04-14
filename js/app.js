@@ -1,10 +1,14 @@
+var get = Ember.get, set = Ember.set, searchApi;
+
 App = Ember.Application.create();
 
-App.Router.map(function() {
-  // put your routes here
+$.getJSON('/api.json').then(function(json){
+  instance = new ApiSearch(json);
 });
 
-var get = Ember.get, set = Ember.set;
+function search(query){
+  return instance.search(query);
+}
 
 App.IndexController = Ember.ObjectController.extend({
   content: Ember.A([]),
