@@ -1,3 +1,5 @@
+import ApiSearch from 'app/lib/api_search';
+
 module("ApiSearch public api");
 
 function buildApiSearch (data) {
@@ -28,7 +30,7 @@ test("empty query", function(){
 });
 
 test("simple search, with no data", function(){
-  var result, query, apiSearch;
+  var instance, result, query, apiSearch;
 
   instance = buildApiSearch();
 
@@ -108,7 +110,7 @@ var exampleData = {
 };
 
 test("simple search, with simple data", function(){
-  var result, query, apiSearch, data;
+  var instance, result, query, apiSearch, data;
 
   instance = buildApiSearch(exampleData);
 
