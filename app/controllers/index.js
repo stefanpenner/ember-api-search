@@ -1,8 +1,9 @@
+import ApiSearch from 'app/lib/api_search';
+
 var get = Ember.get, set = Ember.set, searchApi;
+var instance;
 
-App = Ember.Application.create();
-
-$.getJSON('/api.json').then(function(json){
+$.getJSON('/api/api.json').then(function(json){
   instance = new ApiSearch(json);
 });
 
@@ -10,7 +11,7 @@ function search(query){
   return instance.search(query);
 }
 
-App.IndexController = Ember.ObjectController.extend({
+var IndexController = Ember.ObjectController.extend({
   content: Ember.A([]),
   query: null,
   timer: null,
@@ -35,5 +36,7 @@ App.IndexController = Ember.ObjectController.extend({
     }, 50);
 
     set(this, 'timer', timer);
-  }.observes('query'),
-})
+  }.observes('query')
+});
+
+export IndexController;
